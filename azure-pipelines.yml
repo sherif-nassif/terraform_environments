@@ -1,4 +1,4 @@
-# Azure Pipeline that run basic continuous integration on a Terraform project
+# Azure Pipeline that runs basic continuous integration on a Terraform project
 
 # This makes sure the pipeline is triggered every time code is pushed in the validation-testing example source, on all branches.
 trigger:
@@ -24,10 +24,13 @@ stages:
     - job: TerraformContinuousIntegrationJob
       displayName: TerraformContinuousIntegration - CI Job
       pool:
-        vmImage: ubuntu-20.04
+        vmImage: ubuntu-latest
       steps:
-
-        - task: TerraformTaskV4@4
+        - bash: |
+            git config --global url."https://$SYSTEM_ACCESSTOKEN@dev.azure.com" "AUTHORIZATION: bearer $(System.AccessToken)"
+          displayName: 'Set Git Config'
+          
+        - task: TerraformTaskV1@0
           displayName: 'Terraform init'
           inputs:
             provider: 'aws'
@@ -36,7 +39,3 @@ stages:
             backendServiceAWS: 'AWS for Terraform'
             backendAWSBucketName: 'terraform-state-sapper-s3'
             backendAWSKey: 'state/terraform.tfstate'
-
-
-
-
