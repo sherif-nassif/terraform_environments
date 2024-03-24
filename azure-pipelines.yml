@@ -19,6 +19,7 @@ variables:
 
 stages:
   - stage: TerraformContinuousIntegration
+
     displayName: Terraform Module - CI
     jobs:
     - job: TerraformContinuousIntegrationJob
@@ -29,7 +30,12 @@ stages:
         - bash: |
             git config --global url."https://$SYSTEM_ACCESSTOKEN@dev.azure.com" "AUTHORIZATION: bearer $(System.AccessToken)"
           displayName: 'Set Git Config'
-          
+
+        - task: InstallSSHKey@0
+          inputs:
+            sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCg0C3S55/eRUxYsNyvO9HzpMP5mtbAxmIhykQdGJaSHlN8zqSnDIUUAsF6TyErfD+ckQyMFY8jzswPOIjgrYO/MDI23nhSS0KjRobEjS8Votgg222WDliSEH4oKZ9vUMNBNpr5Nt59QeuoqqJQAMZGocyDnc3jO5y3vdVFLQlz1tbczgJdepWcErEj6MvxQR9kifa6WdytZCXe0VC7LswXjWfp3QDzJ9kl0pEaJ6jYpk5HsD4RCXNyI6zjMve/UL6m63Ww9yDHKB9uQzpDcpR2dJRoxPskp8nPZ7iD2/JuZ7NWnm13b/sBcPk6eLz5gVBIHY7WPHL+9Q5utLnyt9EP enesshe@optimus'
+            sshKeySecureFile: '-----BEGIN RSA PRIVATE KEY----- MIIEowIBAAKCAQEAoNAt0uef3kVMWLDcrzvR86TD+ZrWwMZiIcpEHRiWkh5TfM6k pwyFFALBek8hK3w/nJEMjBWPI87MDziI4K2DvzAyNt54UktCo0aGxI0vFaLYINtt lg5YkhB+KCmfb1DDQTaa+TbefUHrqKqiUADGRqHMg53N4zuct73VRS0Jc9bW3M4C XXqVnBKxI+jL8UEfZIn2ulncrWQl3tFQuy7MF41n6d0A8yfZJdKRGieo2KZOR7A+ EQlzciOs4zL3v1C+put1sPcgxygfbkM6Q3KUdnSUaMT7JKfJz2e4g9vybmezVp5t d2/7AXD5Oni8+YFQSB2O1jxy/vUObrS58rfRDwIDAQABAoIBAQCAMLL2lnEX68HK SWIBxfu87rDR/h4GmZ2MNgJJ91m/rLD8onUaPJ6wrumwJ/fXBDppAi8wU9dAwg5k a7qg73BALZk5p+neH+RE52lysODBrIgA2SnoHhN4i/Ek7tkLESQ0jeTHmHeO/cdv MmYkxBlKIJw4psiCxPhOd+LUO+x3C51+lwmuwc5cBoilgOYv6iKK5UAIQNPwoTku RublnLyDAotqeSCiAHS1vStIx8iRSHrMf7bsAYv8N40z8x6tSYYmkiPCmov2N1+T TXMUqLwcFhyIQuKtgot4ReD3bvk7gPHUlu49OfkMWmb53eip0t7BfOyQCvZ5eQsP y2BekKVxAoGBANPcZuvfxiEti+hLU4IPfQb4KD6dsUU/qV9WuKr3r2VEnFjGKCVv D0c42Wtc39QIMQC7o2gjPHW4QPcyBosru1jkkHdbA9cpudFjkQwN/dGgf4owO/+G CJHT/ga9Kjf+K1HP8KtzJstpSjAEJFxSBDk4kozCsn0hQXk3D8mYTR9LAoGBAMJR JZHkA+mChmipzrEga1blk4VggOX7jq8NTguAJm6ExvGxk5RHtaFKvtREiFx838GK oGU+XmRbyvdCmirkKaStoDkRFxiRvfl4Nko6YHrgS7F8Id3kg3BrXh+sSrinAp6s iNXNoxM9Ya5E6xPyW3Yp1uS6j+WiWg1jNJ+0bgbNAoGAA/Tx1yXuxV/cZRJDFQLF CwRHfCPl061EtIsiF89Yb0PAx8erqEdSubnOFbs+Uu90OtdGTgOadXhjfjpo9OB0 N0zNhe0lPTeCSO7bHqaEPw4IU8Ri2nreXhrfe7C8wR72ICkKDamw58unnw30v+So P4lW81oPi1a7qk/k85bsmdECgYBaXTw4fS3okJ+K2rTZIDdqoLaaxwcKbJKtC2Xo 6T52FN8jlK4JvdNUX5sgwYIcaKHxslLm4jspNprLo7hoC9Tl1Sx2fWEdNuF+uw2c NUuauOXactyZAOSzCesqlYfmGRyZx6iWrNuSXfAoB7q+eu1XpRtfIPc8FeUE5saZ ImIsXQKBgC2tEem48WWedUrtnOojcFGU9EF0z1o5M1YXVUO/2noZkMuxLKQ3vwcE aIEf3vgCNnft5SsqCxxhXTghLAsIG/O0Gfrn+FKmQ7YDHpiBoId3cd6BdA28KsIW fC4PqDap/yOeRcV4Zlf9nDpa8hlmizK4QVQejFcnopW234QQr2Ec -----END RSA PRIVATE KEY-----'
+
         - task: TerraformTaskV1@0
           displayName: 'Terraform init'
           inputs:
