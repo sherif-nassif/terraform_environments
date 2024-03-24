@@ -33,7 +33,8 @@ stages:
           inputs:
             sshPublicKey: $(ssh_public_key)
             sshKeySecureFile: id_rsa
-            knownHostsEntry: $(known_hosts)
+            env:
+            KNOWN_HOSTS : $(known_hosts)
 
         - task: TerraformTaskV1@0
           displayName: 'Terraform init'
