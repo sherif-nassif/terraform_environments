@@ -7,14 +7,14 @@ trigger:
     - '*'
   paths:
     include:
-    - 'autoscaling-module/*'
+    - 'europe/auto-scale/*'
 
 variables:
   # There must be an Azure Service Connection with that name defined in your Azure DevOps settings. See https://docs.microsoft.com/en-us/azure/devops/pipelines/library/connect-to-azure?view=azure-devops
   serviceConnection: 'AwsSapperCIDev01'
   #azureLocation: 'westeurope'
   # Terraform settings
-  terraformWorkingDirectory: '$(System.DefaultWorkingDirectory)/autoscaling-module'
+  terraformWorkingDirectory: '$(System.DefaultWorkingDirectory)/europe/auto-scale'
   terraformVersion: '1.6.5'
 
 stages:
