@@ -50,4 +50,5 @@ stages:
           command: 'apply'
           workingDirectory: '$(terraformWorkingDirectory)'
           environmentServiceNameAWS: 'AWS for Terraform'
+
           
