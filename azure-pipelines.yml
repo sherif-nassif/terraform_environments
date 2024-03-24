@@ -27,6 +27,7 @@ stages:
         vmImage: ubuntu-20.04
       steps:
 
+
       - task: TerraformTaskV4@4
         displayName: 'Terraform init'
         inputs:
