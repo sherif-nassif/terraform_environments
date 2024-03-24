@@ -30,11 +30,11 @@ stages:
           displayName: 'Set Git Config'
 
         - task: InstallSSHKey@0
+          displayName: 'Install an SSH key'
           inputs:
-            sshPublicKey: $(ssh_public_key)
-            sshKeySecureFile: id_rsa
-            env:
-            KNOWN_HOSTS : $(known_hosts)
+            knownHostsEntry: 'SHA256:1Hyr55tsxGifESBMc0s+2NtutnR/4+LOkVwrOGrIp8U johndoe@contoso'
+            sshPublicKey: '$(myPubKey)'
+            sshKeySecureFile: 'id_rsa'
 
         - task: TerraformTaskV1@0
           displayName: 'Terraform init'
