@@ -17,7 +17,6 @@ variables:
 
 stages:
   - stage: TerraformContinuousIntegration
-
     displayName: Terraform Module - CI
     jobs:
     - job: TerraformContinuousIntegrationJob
@@ -25,16 +24,12 @@ stages:
       pool:
         vmImage: ubuntu-latest
       steps:
-        - bash: |
-            git config --global url."https://$SYSTEM_ACCESSTOKEN@dev.azure.com" "AUTHORIZATION: bearer $(System.AccessToken)"
-          displayName: 'Set Git Config'
 
         - task: InstallSSHKey@0
           displayName: 'Install an SSH key'
           inputs:
             knownHostsEntry: 'ssh.dev.azure.com'
-            sshPublicKey: '$(ssh_public_key)'
-            sshKeySecureFile: 'id_rsa'
+            sshKeySecureFile: id_rsa
 
         - task: TerraformTaskV1@0
           displayName: 'Terraform init'
