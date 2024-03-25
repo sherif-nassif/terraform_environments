@@ -40,3 +40,19 @@ stages:
             backendServiceAWS: 'AWS for Terraform'
             backendAWSBucketName: 'terraform-state-sapper-s3'
             backendAWSKey: 'state/terraform.tfstate'
+
+        - task: TerraformTaskV4@4
+          displayName: 'Terraform Plan'
+          inputs:
+            provider: 'aws'
+            command: 'plan'
+            workingDirectory: '$(terraformWorkingDirectory)'
+            environmentServiceNameAWS: 'AWS for Terraform'
+
+        - task: TerraformTaskV4@4
+          displayName: 'Terraform APPLY!'
+          inputs:
+            provider: 'aws'
+            command: 'apply'
+            workingDirectory: '$(terraformWorkingDirectory)'
+            environmentServiceNameAWS: 'AWS for Terraform'
