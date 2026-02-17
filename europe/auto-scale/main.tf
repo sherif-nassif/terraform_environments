@@ -1,9 +1,9 @@
 module "terrafrom_ASG" {
-  source  = "git::ssh://git@ssh.dev.azure.com/v3/ericsson/Sapper/Terraform_Modules_AWS//autoscaling-module"
+  source  = "../../../terraform_modules_aws/autoscaling-module"
   port    = "80"
   image = "ami-00381a880aa48c6c6" #Ubuntu Server 22.04 LT x86 64 bits
   flavor = "t3.micro"
-  vpc_name = "Sapper_AWS_Terraform_VPC"
+  vpc_name = "sherif-vpc"
   vpc_cidr_block = "16.100.0.0/16"
   az_1  = "eu-north-1a"
   az_2  = "eu-north-1b"

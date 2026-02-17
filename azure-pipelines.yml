@@ -13,7 +13,7 @@ variables:
   group: vargroup1
   terraformWorkingDirectory: '$(System.DefaultWorkingDirectory)/europe/auto-scale'
   terraformVersion: '1.6.5'
-  serviceConnection: 'AwsSapperCIDev01'
+  serviceConnection: 'AwssherifCIDev01'
 
 stages:
   - stage: TerraformContinuousIntegration
@@ -38,7 +38,7 @@ stages:
             command: 'init'
             workingDirectory: '$(terraformWorkingDirectory)'
             backendServiceAWS: 'AWS for Terraform'
-            backendAWSBucketName: 'terraform-state-sapper-s3'
+            backendAWSBucketName: 'terraform-state-sherif-s3'
             backendAWSKey: 'state/terraform.tfstate'
 
         - task: TerraformTaskV4@4
