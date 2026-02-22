@@ -1,5 +1,5 @@
 module "terrafrom_ASG" {
-  source  = "../../../terraform_modules_aws/autoscaling-module"
+  source  = "git::https://github.com/sherif-nassif/terraform_modules.git//autoscaling-module"
   port    = "80"
   image = "ami-00381a880aa48c6c6" #Ubuntu Server 22.04 LT x86 64 bits
   flavor = "t3.micro"
