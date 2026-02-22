@@ -1,3 +1,6 @@
+provider "aws" {
+  region                  = "eu-north-1"
+}
 
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "terraform-state-sherif-s3"
