@@ -14,7 +14,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: terraform-state
-        path: ./europe/auto-scale
+        path: europe/auto-scale
       continue-on-error: true
     
     - name: Setup Terraform

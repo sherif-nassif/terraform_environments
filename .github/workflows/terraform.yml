@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: terraform-state
-        path: ./europe/auto-scale/terraform.tfstate  
+        path: europe/auto-scale/terraform.tfstate  
       
   #  - name: Terraform Apply
   #    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
