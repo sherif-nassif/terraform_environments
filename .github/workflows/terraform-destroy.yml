@@ -17,6 +17,13 @@ jobs:
       run: terraform init
       working-directory: ./europe/auto-scale
       
+    - name: Terraform Refresh
+      run: terraform refresh
+      working-directory: ./europe/auto-scale
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      
     - name: Terraform Destroy
       run: terraform destroy -auto-approve
       working-directory: ./europe/auto-scale
