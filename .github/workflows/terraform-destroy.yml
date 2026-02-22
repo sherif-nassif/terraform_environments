@@ -10,6 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Download State
+      uses: actions/download-artifact@v3
+      with:
+        name: terraform-state
+        path: ./europe/auto-scale
+      continue-on-error: true
+    
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       
