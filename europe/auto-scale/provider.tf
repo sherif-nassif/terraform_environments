@@ -8,7 +8,7 @@ backend "s3" {
     key                = "state/terraform.tfstate"
     region         	   = "eu-north-1"
     encrypt        	   = true
-    use_lockfile = "terraform-state-lock-dynamo-sherif"
+    use_lockfile       = true
   }
 }
 
