@@ -3,13 +3,13 @@ provider "aws" {
 }
 
 terraform {
-# backend "s3" {
-#     bucket         	   = "terraform-state-sherif-s3"
-#     key                = "state/terraform.tfstate"
-#     region         	   = "eu-north-1"
-#     encrypt        	   = true
-#     dynamodb_table = "terraform-state-lock-dynamo-sherif"
-#   }
+backend "s3" {
+    bucket         	   = "terraform-state-sherif-s3"
+    key                = "state/terraform.tfstate"
+    region         	   = "eu-north-1"
+    encrypt        	   = true
+    dynamodb_table = "terraform-state-lock-dynamo-sherif"
+  }
 }
 
 

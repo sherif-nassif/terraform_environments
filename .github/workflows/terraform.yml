@@ -35,19 +35,5 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         
-    - name: Find State File
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: |
-        pwd
-        ls -la
-        find . -name "terraform.tfstate" -type f
-
-    - name: Upload State
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      uses: actions/upload-artifact@v4
-      with:
-        name: terraform-state
-        path: europe/auto-scale/terraform.tfstate
-        
 
 

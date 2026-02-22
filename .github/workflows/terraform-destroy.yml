@@ -10,26 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Download State
-      uses: actions/download-artifact@v4
-      with:
-        name: terraform-state
-        path: europe/auto-scale
-      continue-on-error: true
-    
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       
     - name: Terraform Init
       run: terraform init
       working-directory: ./europe/auto-scale
-      
-    - name: Terraform Refresh
-      run: terraform refresh
-      working-directory: ./europe/auto-scale
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       
     - name: Terraform Destroy
       run: terraform destroy -auto-approve
